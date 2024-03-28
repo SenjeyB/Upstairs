@@ -15,19 +15,24 @@ namespace EnemyAI
         private PlayerInfo _playerInfo;
         private float _nextSpawnTime;
         private int _tries;
+        private float _spawnPointsMult;
         private void Start()
         {
             _diffCoefficient = (GameObject.FindWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().GetDifficulty() - 1) * 0.25f + 0.75f;
             _playerInfo = GetComponent<PlayerInfo>();
             _nextSpawnTime = Time.time + 8f;
+            _spawnPointsMult = 1f;
         }
         
         private void Update()
         {
-            _spawnPoints += Time.deltaTime * ((_diffCoefficient - 1) * 2 + 1) * _playerInfo.GetCoefficient();
+            Debug.Log(_spawnPointsMult);
+            _spawnPointsMult = _diffCoefficient * ((_playerInfo.GetCoefficient() - 1) * (_playerInfo.GetCoefficient() - 1) + 1);
+            _spawnPoints += Time.deltaTime * _spawnPointsMult;
+            
             if (_nextSpawnTime >= Time.time) return;
             TrySummon();
-            _nextSpawnTime = Time.time + 2f;
+            _nextSpawnTime = Time.time + (4f / _diffCoefficient);
         }
         
         private void TrySummon()
@@ -74,14 +79,14 @@ namespace EnemyAI
                     int i = 0;
                     while (true)
                     {
-                        int rand = Random.Range(0, 6);
-                        if (rand < 3)
+                        int rand = Random.Range(0, 7);
+                        if (rand < 4)
                         {
                             if(_spawnPoints < _enemyCosts[0]) break;
                             _spawnPoints -= _enemyCosts[0];
                             Invoke(nameof(SpawnSkeleton), 0.3f * i);
                         }
-                        else if (rand < 5)
+                        else if (rand < 6)
                         {
                             if(_spawnPoints < _enemyCosts[1]) break;
                             _spawnPoints -= _enemyCosts[1];
@@ -102,20 +107,20 @@ namespace EnemyAI
                     int i = 0;
                     while (true)
                     {
-                        int rand = Random.Range(0, 12);
-                        if (rand < 4)
+                        int rand = Random.Range(0, 13);
+                        if (rand < 5)
                         {
                             if(_spawnPoints < _enemyCosts[0]) break;
                             _spawnPoints -= _enemyCosts[0];
                             Invoke(nameof(SpawnSkeleton), 0.3f * i);
                         }
-                        else if (rand < 7)
+                        else if (rand < 9)
                         {
                             if(_spawnPoints < _enemyCosts[1]) break;
                             _spawnPoints -= _enemyCosts[1];
                             Invoke(nameof(SpawnMiner), 0.3f * i);
                         }
-                        else if (rand < 10)
+                        else if (rand < 12)
                         {
                             if(_spawnPoints < _enemyCosts[3]) break;
                             _spawnPoints -= _enemyCosts[3];

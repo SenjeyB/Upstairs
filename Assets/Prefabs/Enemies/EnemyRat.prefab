@@ -50,6 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e1c5ccda2d6a840902c845b0ef83b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sounds:
+  - {fileID: 8300000, guid: 8502332d4239a394e8d00243f0695b57, type: 3}
   _turret: {fileID: 0}
   _spriteRenderer: {fileID: 2445050488429953292}
 --- !u!114 &8937826302508450728

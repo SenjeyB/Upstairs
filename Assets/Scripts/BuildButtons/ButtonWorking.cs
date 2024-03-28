@@ -50,14 +50,14 @@ namespace BuildButtons
                 [TowerType.Ballista] = 8,
                 [TowerType.Taser] = 12,
                 [TowerType.Catapult] = 16,
-                [TowerType.Firecracker] = 16
+                [TowerType.Firecracker] = 12
             };
             _costsUpgrade = new Dictionary<TowerType, int>
             {
                 [TowerType.Ballista] = 12,
                 [TowerType.Taser] = 15,
                 [TowerType.Catapult] = 18,
-                [TowerType.Firecracker] = 18
+                [TowerType.Firecracker] = 15
             };
             _costsReload = new Dictionary<TowerType, int>
             {
@@ -177,7 +177,7 @@ namespace BuildButtons
             }
             if (_buttonType == 3)
             {
-                _toolTipPanel.GetComponent<ToolTip>().ShowTooltip("Ballista shoots fast, deal low damage and have high ammo capacity", _costs[TowerType.Ballista]);
+                _toolTipPanel.GetComponent<ToolTip>().ShowTooltip("Ballista shoots fast, deals low damage and has high ammo capacity", _costs[TowerType.Ballista]);
             }
             if (_buttonType == 4)
             {

@@ -8,7 +8,7 @@ namespace MainMenu
         private void Start()
         {
             DontDestroyOnLoad(gameObject);
-            PlaySound(_sounds[0]);
+            PlaySound(_sounds[0], 1f, false, true);
             if(GameObject.FindWithTag("MenuMusic") != gameObject)
             {
                 Destroy(gameObject);
@@ -17,7 +17,7 @@ namespace MainMenu
 
         private void Update()
         {
-            if (!_audioSource.isPlaying) PlaySound(_sounds[0]);
+            if (!_audioSource.isPlaying) PlaySound(_sounds[0], 1f, false, true);
             
             if(SceneManager.GetActiveScene().name == "Plains" || SceneManager.GetActiveScene().name == "TwoHills" || SceneManager.GetActiveScene().name == "TwoRivers")
             {

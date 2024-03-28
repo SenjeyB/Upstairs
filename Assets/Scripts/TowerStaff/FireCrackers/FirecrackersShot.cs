@@ -6,6 +6,7 @@ namespace TowerStaff.FireCrackers
     public class FirecrackersShot : BasicShot
     {
         [SerializeField] private float _speed;
+        [SerializeField] private GameObject _batPrefab;
 
         private Rigidbody2D _rigidbody;
         private Transform _target;
@@ -33,7 +34,7 @@ namespace TowerStaff.FireCrackers
             var enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemies)
             {
-                if (enemy.transform.position.y > transform.position.y + 2f)
+                if (enemy.transform.position.y > transform.position.y + 2f && enemy.name == "EnemyBat(Clone)")
                 {
                     return enemy.transform;
                 }

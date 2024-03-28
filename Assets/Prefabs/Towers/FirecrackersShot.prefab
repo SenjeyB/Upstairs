@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 42
+  _batPrefab: {fileID: 7843926686798707670, guid: 706453a81d4a717458750ec3e5b595d0, type: 3}
 --- !u!50 &8238198866752382035
 Rigidbody2D:
   serializedVersion: 4

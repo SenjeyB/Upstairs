@@ -21,6 +21,40 @@ namespace TowerStaff.Ballista
             _nextFireTime = Time.time + _reloadSpeed;
             _ammo.DecreaseAmmo();
         }
-        
+
+        protected override void ShootingSide()
+        {
+            var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            GameObject closestEnemy = null;
+            float closestDistance = float.MaxValue;
+
+            foreach (GameObject enemy in enemies)
+            {
+                if (enemy.transform.position.y < transform.position.y - 1f || enemy.transform.position.y > transform.position.y + 2f)
+                {
+                    continue;
+                }
+                float distance = Vector2.Distance(transform.position, enemy.transform.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestEnemy = enemy;
+                }
+            }
+            if (closestEnemy == null)
+            {
+                return;
+            }
+            if (closestEnemy.transform.position.x >= transform.position.x && !_spriteRenderer.flipX)
+            {
+                return;
+            }
+            if (closestEnemy.transform.position.x <= transform.position.x && _spriteRenderer.flipX)
+            {
+                return;
+            }
+
+            _spriteRenderer.flipX = !_spriteRenderer.flipX;
+        }
     }
 }

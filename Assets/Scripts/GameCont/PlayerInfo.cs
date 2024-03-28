@@ -40,7 +40,7 @@ namespace GameCont
             _player = GameObject.FindGameObjectWithTag("Player");
             _gameTime = Time.time;
             _playerInfo = _player.GetComponent<TakingDamage>();
-            PlaySound(_sounds[0]);
+            PlaySound(_sounds[0], 1f, false, true);
             //_essence = 13;
             _score = 0;
             _nextUpdateTimer = Time.time + _nextUpdate;
@@ -80,9 +80,9 @@ namespace GameCont
             
         private void Update()
         {
-            if(!_audioSource.isPlaying) PlaySound(_sounds[0], 0.8f);
+            if(!_audioSource.isPlaying) PlaySound(_sounds[0], 1f, false, true);
             if (_nextUpdateTimer > Time.time) return;
-            _coefficient *= 1.15f;
+            _coefficient *= 1.2f;
             _nextUpdateTimer = Time.time + _nextUpdate;
  
             

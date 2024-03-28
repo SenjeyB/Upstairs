@@ -9,17 +9,19 @@ namespace EnemyAI.Bat
         private float _speed;
         private GameObject _player;
         private bool _isDiving;
+        private bool _canDiving;
         private PlayerInfo _gameInfo;
         private int _direction = 1;
         private Vector3 _diveDirection;
 
         private void Start()
         {
-            _levitationHeight = Random.value * 2 + 3f;
+            _levitationHeight = Random.value * 2 + 2.5f;
             _gameInfo = GameObject.FindGameObjectWithTag("GameController").GetComponent<PlayerInfo>();
             _speed = _gameInfo.GetCoefficient();
             _player = GameObject.FindGameObjectWithTag("Player");
             _isDiving = false;
+            _canDiving = false;
         }
 
         private void Update()
@@ -30,14 +32,18 @@ namespace EnemyAI.Bat
                 {
                     transform.position += new Vector3(0, _speed * Time.deltaTime, 0);
                 }
-                if (transform.position.y > _levitationHeight)
+                else if (transform.position.y > _levitationHeight)
                 {
                     transform.position -= new Vector3(0, _speed * Time.deltaTime, 0);
+                }
+                if (Mathf.Abs(transform.position.y - _levitationHeight) < 0.4f)
+                {
+                    _canDiving = true;
                 }
                 transform.position += new Vector3(_speed * Time.deltaTime * _direction, 0, 0);
                 if (transform.position.x > 7) _direction = -1;
                 if (transform.position.x < -7) _direction = 1;
-                if (Random.Range(0, 300000 / Time.time) < 1)
+                if (Random.Range(0, 55000 * Time.deltaTime) < 1 && _canDiving)
                 {
                     _isDiving = true;
                     _diveDirection = _player.transform.position;
@@ -45,6 +51,7 @@ namespace EnemyAI.Bat
             }
             else
             {
+                _canDiving = false;
                 Vector3 direction = (_diveDirection - transform.position).normalized;
                 transform.position += direction * _speed * Time.deltaTime * 4;
                 if (!(Vector3.Distance(transform.position, _diveDirection) < 0.3f)) return;

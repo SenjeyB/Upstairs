@@ -201,6 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 134140d97330a1b45957a6d307bb5fc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sounds:
+  - {fileID: 8300000, guid: 8502332d4239a394e8d00243f0695b57, type: 3}
   _spriteRenderer: {fileID: 2117518250533818830}
 --- !u!70 &2297542369781424609
 CapsuleCollider2D:

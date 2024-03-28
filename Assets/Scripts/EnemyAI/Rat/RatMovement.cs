@@ -12,7 +12,7 @@ using Vector3 = UnityEngine.Vector3;
 
 namespace EnemyAI.Rat
 {
-    public class RatMovement : MonoBehaviour
+    public class RatMovement : SoundsCont
     {
         [SerializeField] public GameObject _turret;
         [SerializeField] private SpriteRenderer _spriteRenderer;
@@ -21,19 +21,26 @@ namespace EnemyAI.Rat
         private float _speed;
         private bool _jumped;
         private Rigidbody2D _rigidbody;
+        private float _nextSoundTime;
+        private float _nextSoundTimeReload = 0.5f;
         private void Move()
         {
             Vector3 position = transform.position;
             _transformMove = Vector2.MoveTowards(position, _turret.transform.position, _speed * Time.deltaTime);
             _spriteRenderer.flipX = _transformMove.x < position.x;
-            position = _transformMove;
-            transform.position = position;
+            transform.position = _transformMove;
+            if (Math.Abs(_rigidbody.velocity.y) <= 0.1 && !_audioSource.isPlaying && Time.time > _nextSoundTime)
+            {
+                PlaySound(_sounds[0], 0.05f);
+                _nextSoundTime = Time.time + _nextSoundTimeReload;
+            }
         }
         private void Start()
         {
             _gameInfo = GameObject.FindGameObjectWithTag("GameController").GetComponent<PlayerInfo>();
             _speed = Mathf.Max(_gameInfo.GetCoefficient() * 0.8f, 1);
             _rigidbody = GetComponent<Rigidbody2D>();
+            _nextSoundTime = Time.time + _nextSoundTimeReload;
             FindNearestTurret();
         }
         private void Update()

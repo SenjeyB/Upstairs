@@ -15,11 +15,11 @@ namespace Bonuses
             float spawnCord = Random.value * 14 - 7;
             _bonus = Instantiate(_bonusPrefab, new Vector3(spawnCord, 7, 0), Quaternion.identity);
             _bonus.GetComponent<Bonus>().SetBonusType(bonusType);
-            _nextSpawnTime = Time.time + Random.Range(70, 110);
+            _nextSpawnTime = Time.time + Random.Range(120, 150);
         }
         private void Start()
         {
-            _nextSpawnTime = Time.time + Random.Range(45, 75);
+            _nextSpawnTime = Time.time + Random.Range(110, 130);
         }
         private void Update()
         {

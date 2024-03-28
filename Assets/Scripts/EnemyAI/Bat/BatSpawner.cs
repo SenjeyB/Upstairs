@@ -8,8 +8,8 @@ namespace EnemyAI.Bat
         
         public void SpawnEnemy()
         {
-            float rand = Random.value * 14 - 7; 
-            Instantiate(_enemyPrefab, new Vector3(7 * rand, 6), Quaternion.identity);
+            float rand = Random.value * 20 - 10; 
+            Instantiate(_enemyPrefab, new Vector3(rand, 6), Quaternion.identity);
         }
     }
 }

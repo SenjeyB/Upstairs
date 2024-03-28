@@ -21,6 +21,8 @@ namespace BuildTile
         private bool _isBroken;
         private GameObject _myTower;
         private TowerType _towerType;
+        private bool _showing;
+        private bool _canShowing;
         private Dictionary<TowerType, GameObject> _towers;
 
         private void DrawShop()
@@ -56,23 +58,49 @@ namespace BuildTile
                 Destroy(button);
             }
         }
-        private void OnTriggerEnter2D(Collider2D other)
+
+        private void ShopActivation()
         {
-            if (!other.CompareTag("Player")) return;
-            if (_towerType == TowerType.NotSet)
+            if (!_showing)
             {
-                DrawShop();
+                _showing = true;
+                if (_towerType == TowerType.NotSet)
+                {
+                    DrawShop();
+                }
+                else
+                {
+                    DrawUpgrade();
+                }
             }
             else
             {
-                DrawUpgrade();
+                _showing = false;
+                DestroyDraw();
             }
+        }
+        
+        
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if(!other.CompareTag("Player")) return;
+            _canShowing = true;
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
             if (!other.CompareTag("Player")) return;
-            DestroyDraw();
+            if(_showing) DestroyDraw();
+            _showing = false;
+            _canShowing = false;
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                if (_canShowing) ShopActivation();
+            }
         }
         
         public void SetTowerType(TowerType towerType)
@@ -97,6 +125,7 @@ namespace BuildTile
                 DrawUpgrade();
             }
         }
+
         public void UpgradeTower(int cost)
         {
             if (_myTower.GetComponent<BasicTowerLevel>().GetLevel() < 3)
@@ -128,6 +157,8 @@ namespace BuildTile
 
         private void Start()
         {
+            _showing = false;
+            _canShowing = false;
             _isRatted = false;
             _isBroken = false;
             _playerInfo = GameObject.FindWithTag("GameController").GetComponent<PlayerInfo>();

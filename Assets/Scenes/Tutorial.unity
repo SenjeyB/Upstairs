@@ -485,7 +485,7 @@ MonoBehaviour:
     Space - to jump
 
 
-    Player have two parameters: Health
+    Player has two parameters: Health
     and Essence. Enemies are trying to kill you dealing 1 damage per hit.
 
 
@@ -499,12 +499,13 @@ MonoBehaviour:
     store mechanics:
 
     To open the store menu, stand next to purple platform or
-    one of your building. Hover your mouse over one of the buttons or your turrets
-    to learn more about what it does. Almost everything require some Essence to buy.
+    one of your building and press "W". Hover your mouse over one of the buttons
+    or your turrets to learn more about what it does. Almost everything require some
+    Essence to buy.
 
 
-    Sometimes
-    jars containing extra health or essence will fall from the sky. Don''t miss them! '
+    Sometimes jars containing extra health or essence will
+    fall from above. Don''t miss them! '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c530efe1f5e412249a8b70d197ed0671, type: 2}
   m_sharedMaterial: {fileID: 5505074672456365520, guid: c530efe1f5e412249a8b70d197ed0671, type: 2}
