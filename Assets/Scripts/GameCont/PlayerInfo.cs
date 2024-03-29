@@ -9,7 +9,7 @@ namespace GameCont
 
         [SerializeField] private int _upgradesLeft;
         [SerializeField] private int _essence;
-        [SerializeField] private Font _font;
+        private float _difficultyMult;
         private GameObject _player;
         private TakingDamage _playerInfo;
         private float _gameTime;
@@ -38,10 +38,11 @@ namespace GameCont
         private void Start()
         {
             _player = GameObject.FindGameObjectWithTag("Player");
+            _difficultyMult = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().GetDifficulty();
+            _difficultyMult *= 0.07f;
             _gameTime = Time.time;
             _playerInfo = _player.GetComponent<TakingDamage>();
             PlaySound(_sounds[0], 1f, false, true);
-            //_essence = 13;
             _score = 0;
             _nextUpdateTimer = Time.time + _nextUpdate;
             Invoke(nameof(UpdateScore), 1f);
@@ -82,7 +83,7 @@ namespace GameCont
         {
             if(!_audioSource.isPlaying) PlaySound(_sounds[0], 1f, false, true);
             if (_nextUpdateTimer > Time.time) return;
-            _coefficient *= 1.2f;
+            _coefficient *= 1 + _difficultyMult;
             _nextUpdateTimer = Time.time + _nextUpdate;
  
             
