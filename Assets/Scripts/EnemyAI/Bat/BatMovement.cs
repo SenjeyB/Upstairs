@@ -18,7 +18,7 @@ namespace EnemyAI.Bat
         {
             _levitationHeight = Random.value * 2 + 2.5f;
             _gameInfo = GameObject.FindGameObjectWithTag("GameController").GetComponent<PlayerInfo>();
-            _speed = _gameInfo.GetCoefficient();
+            _speed = Mathf.Min(_gameInfo.GetCoefficient() / 2, 3.2f);
             _player = GameObject.FindGameObjectWithTag("Player");
             _isDiving = false;
             _canDiving = false;

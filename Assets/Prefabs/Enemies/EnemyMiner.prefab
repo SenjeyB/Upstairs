@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sounds:
   - {fileID: 8300000, guid: 2326475e8643f574c9a294603d939cb1, type: 3}
-  _health: 2
+  _health: 0.8
   _spriteRenderer: {fileID: 8559755448387775886}
   _materialBlink: {fileID: 2100000, guid: 40a3baf2982cc894ca7da07412009f57, type: 2}
   _deathEffect: {fileID: 5293775880658207468, guid: 50b1b2c2e8e28ac41b696a1eeddf55d5, type: 3}

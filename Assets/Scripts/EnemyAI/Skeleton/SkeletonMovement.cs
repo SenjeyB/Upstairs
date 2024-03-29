@@ -30,7 +30,7 @@ namespace EnemyAI.Skeleton
         {
             _player = GameObject.FindGameObjectWithTag("Player");
             _gameInfo = GameObject.FindGameObjectWithTag("GameController").GetComponent<PlayerInfo>();
-            _speed = Mathf.Max(_gameInfo.GetCoefficient() * 0.7f, 1);
+            _speed = Mathf.Max(_gameInfo.GetCoefficient() * 0.4f, 1);
             _rigidbody = GetComponent<Rigidbody2D>();
             _nextSoundTime = Time.time + _nextSoundTimeReload;
         }

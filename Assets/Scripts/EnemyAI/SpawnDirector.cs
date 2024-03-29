@@ -27,9 +27,8 @@ namespace EnemyAI
         private void Update()
         {
             Debug.Log(_spawnPointsMult);
-            _spawnPointsMult = _diffCoefficient * ((_playerInfo.GetCoefficient() - 1) * (_playerInfo.GetCoefficient() - 1) + 1);
+            _spawnPointsMult = _diffCoefficient * _playerInfo.GetCoefficient();
             _spawnPoints += Time.deltaTime * _spawnPointsMult;
-            
             if (_nextSpawnTime >= Time.time) return;
             TrySummon();
             _nextSpawnTime = Time.time + (4f / _diffCoefficient);
@@ -52,7 +51,7 @@ namespace EnemyAI
                         i++;
                     }
                 }
-                else if (_playerInfo.GetGameTime() < 100 / _diffCoefficient)
+                else if (_playerInfo.GetGameTime() < 150 / _diffCoefficient)
                 {
                     int i = 0;
                     while (true)
@@ -74,7 +73,7 @@ namespace EnemyAI
                         i++;
                     }
                 }
-                else if (_playerInfo.GetGameTime() < 150 / _diffCoefficient)
+                else if (_playerInfo.GetGameTime() < 250 / _diffCoefficient)
                 {
                     int i = 0;
                     while (true)
@@ -108,13 +107,13 @@ namespace EnemyAI
                     while (true)
                     {
                         int rand = Random.Range(0, 13);
-                        if (rand < 5)
+                        if (rand < 6)
                         {
                             if(_spawnPoints < _enemyCosts[0]) break;
                             _spawnPoints -= _enemyCosts[0];
                             Invoke(nameof(SpawnSkeleton), 0.3f * i);
                         }
-                        else if (rand < 9)
+                        else if (rand < 10)
                         {
                             if(_spawnPoints < _enemyCosts[1]) break;
                             _spawnPoints -= _enemyCosts[1];

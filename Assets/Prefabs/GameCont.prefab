@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a91cdaa9c9cbc43a2e23249bf0cf67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyCosts: 07000000080000000a00000009000000
+  _enemyCosts: 07000000090000000b0000000b000000
 --- !u!114 &6435806578082725118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,7 +121,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 498137a87d385f44f8ea8f519b13990b, type: 3}
   _upgradesLeft: 8
   _essence: 12
-  _font: {fileID: 12800000, guid: d425a482da8a85e4f9d40fd35dfbdc99, type: 3}
 --- !u!114 &7706785432951083878
 MonoBehaviour:
   m_ObjectHideFlags: 0

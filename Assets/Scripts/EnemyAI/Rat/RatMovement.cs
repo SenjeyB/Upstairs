@@ -38,7 +38,7 @@ namespace EnemyAI.Rat
         private void Start()
         {
             _gameInfo = GameObject.FindGameObjectWithTag("GameController").GetComponent<PlayerInfo>();
-            _speed = Mathf.Max(_gameInfo.GetCoefficient() * 0.8f, 1);
+            _speed = Mathf.Max(_gameInfo.GetCoefficient() * 0.5f, 1);
             _rigidbody = GetComponent<Rigidbody2D>();
             _nextSoundTime = Time.time + _nextSoundTimeReload;
             FindNearestTurret();
