@@ -18,7 +18,7 @@ namespace GameCont
             _score.text = "Score: " + _playerInfo.GetScore();
             _upgradesLeft.text = "Upgrade points: " + _playerInfo.GetUpgradesLeft();
             int time = _playerInfo.GetTime();
-            _time.text = ((time / 60) / 10 + (time / 60) % 10 + ":" + (time % 60) / 10 + (time % 60) % 10).ToString();
+            _time.text = (time / 60 + ":" + (time % 60) / 10 + (time % 60) % 10).ToString();
         }
 
         private void Start()
