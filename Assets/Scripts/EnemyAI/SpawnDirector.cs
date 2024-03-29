@@ -18,7 +18,7 @@ namespace EnemyAI
         private float _spawnPointsMult;
         private void Start()
         {
-            _diffCoefficient = (GameObject.FindWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().GetDifficulty() - 1) * 0.25f + 0.75f;
+            _diffCoefficient = (GameObject.FindWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().GetDifficulty() - 1) * 0.125f + 1f;
             _playerInfo = GetComponent<PlayerInfo>();
             _nextSpawnTime = Time.time + 8f;
             _spawnPointsMult = 1f;
