@@ -92,12 +92,12 @@ namespace BuildButtons
                 if (_playerInfo.GetEssence() >= _costsUpgrade[towerType] * _builderTile.GetLevel() && _builderTile.GetLevel() < 3 && _playerInfo.GetUpgradesLeft() > 0)
                 {
                     _builderTile.UpgradeTower(_costsUpgrade[towerType] * _builderTile.GetLevel());
-                    
+                    _builderTile.ReloadTower();
                 }
                 else
                 {
                     PlaySound(_sounds[0]);
-                    Debug.Log("Not enough essence");
+                    //Debug.Log("Not enough essence");
                 }
             }
             else if (_buttonType == 2)
@@ -111,7 +111,7 @@ namespace BuildButtons
                 else
                 {
                     PlaySound(_sounds[0]);
-                    Debug.Log("Not enough essence");
+                    //Debug.Log("Not enough essence");
                 }
             }
             else
@@ -124,7 +124,7 @@ namespace BuildButtons
                 else
                 {
                     PlaySound(_sounds[0]);
-                    Debug.Log("Not enough essence");
+                    //Debug.Log("Not enough essence");
                 }
             }
         }

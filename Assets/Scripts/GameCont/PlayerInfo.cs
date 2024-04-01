@@ -35,17 +35,22 @@ namespace GameCont
             return Time.time - _gameTime;
         }
         
-        private void Start()
+        private void Awake()
         {
             _player = GameObject.FindGameObjectWithTag("Player");
-            _difficultyMult = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().GetDifficulty();
-            _difficultyMult *= 0.07f;
+            _difficultyMult = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().GetDifficulty() - 1;
+            _difficultyMult *= 0.12f;
             _gameTime = Time.time;
             _playerInfo = _player.GetComponent<TakingDamage>();
             PlaySound(_sounds[0], 1f, false, true);
             _score = 0;
             _nextUpdateTimer = Time.time + _nextUpdate;
             Invoke(nameof(UpdateScore), 1f);
+        }
+        
+        public float GetDifficultyMult()
+        {
+            return _difficultyMult;
         }
         
         private void UpdateScore()

@@ -26,7 +26,6 @@ namespace EnemyAI
         
         private void Update()
         {
-            Debug.Log(_spawnPointsMult);
             _spawnPointsMult = _diffCoefficient * _playerInfo.GetCoefficient();
             _spawnPoints += Time.deltaTime * _spawnPointsMult;
             if (_nextSpawnTime >= Time.time) return;

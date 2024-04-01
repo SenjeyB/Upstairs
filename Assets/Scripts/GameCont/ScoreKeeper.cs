@@ -10,7 +10,7 @@ namespace GameCont
     public class ScoreKeeper : MonoBehaviour
     {
         private Dictionary<string, int> _scores = new Dictionary<string, int>();
-        private Dictionary<string, bool> _settings = new Dictionary<string, bool>();
+        private Dictionary<string, float> _settings = new Dictionary<string, float>();
         private int _difficulty;
         private int _lastScore;
         private string _filePath;
@@ -28,8 +28,8 @@ namespace GameCont
             _filePathSettings = Path.Combine(Application.persistentDataPath, "settings.dat");
             LoadScores();
             LoadSettings();
-            _settings.TryAdd("Music", false);
-            _settings.TryAdd("Sound", false);
+            _settings.TryAdd("Music", 1f);
+            _settings.TryAdd("Sound", 1f);
             //SaveSettings();
             //Debug.Log(_settings["Sound"]);
             //Debug.Log(_settings["Music"]);
@@ -96,11 +96,11 @@ namespace GameCont
             if (!File.Exists(_filePathSettings)) return;
             using BinaryReader reader = new BinaryReader(File.Open(_filePathSettings, FileMode.Open));
             int count = reader.ReadInt32();
-            _settings = new Dictionary<string, bool>(count);
+            _settings = new Dictionary<string, float>(count);
             for (int i = 0; i < count; i++)
             { 
                 string key = reader.ReadString();
-                bool value = reader.ReadBoolean();
+                float value = reader.ReadSingle();
                 _settings.Add(key, value);
             }
         }
@@ -126,17 +126,17 @@ namespace GameCont
             return _difficulty;
         }
 
-        public void ToggleSetting(string setting, bool value)
+        public void ValueSetting(string setting, float value)
         {
             _settings[setting] = value;
             if(setting == "Music")
             {
-                GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<MenuMusic>()._audioSource.volume = _settings[setting] ? 1.0f : 0.0f; 
+                GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<MenuMusic>()._audioSource.volume = _settings[setting]; 
             }
             SaveSettings();
         }
         
-        public bool IsToggle(string setting)
+        public float GetValue(string setting)
         {
             return _settings[setting];
         }
