@@ -25,7 +25,7 @@ namespace GameCont
                 Destroy(gameObject);
             }
             _filePath = Path.Combine(Application.persistentDataPath, "scores.dat");
-            _filePathSettings = Path.Combine(Application.persistentDataPath, "settings.dat");
+            _filePathSettings = Path.Combine(Application.persistentDataPath, "setting.dat");
             LoadScores();
             LoadSettings();
             _settings.TryAdd("Music", 1f);
