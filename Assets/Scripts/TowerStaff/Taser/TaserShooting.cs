@@ -8,7 +8,7 @@ namespace TowerStaff.Taser
         {
             _reloadSpeed -= 0.5f;
             _damage += 0.7f;
-            _ammoCount += 5;
+            _ammo.IncreaseAmmoCount(5);
         }
         
         protected override void Shoot()

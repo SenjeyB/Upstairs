@@ -9,7 +9,7 @@ namespace TowerStaff.Ballista
         {
             _reloadSpeed -= 0.6f;
             _damage += 0.4f;
-            _ammoCount += 6;
+            _ammo.IncreaseAmmoCount(6);
         }
         protected override void Shoot()
         {

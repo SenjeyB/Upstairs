@@ -8,7 +8,7 @@ namespace TowerStaff.Catapult
         {
             _reloadSpeed -= 0.7f;
             _damage += 1f;
-            _ammoCount += 4;
+            _ammo.IncreaseAmmoCount(4);
         }
         
         protected override void Shoot()

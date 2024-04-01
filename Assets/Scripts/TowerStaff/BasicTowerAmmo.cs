@@ -12,6 +12,11 @@ namespace TowerStaff
             _ammo = _ammoCount;
             _shooting.Reload();
         }
+
+        public void IncreaseAmmoCount(int x)
+        {
+            _ammoCount += x;
+        }
         
         private void Start()
         {
