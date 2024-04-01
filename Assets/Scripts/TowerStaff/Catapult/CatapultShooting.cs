@@ -21,5 +21,40 @@ namespace TowerStaff.Catapult
             _nextFireTime = Time.time + _reloadSpeed;
             _ammo.DecreaseAmmo();
         }
+
+        protected override void ShootingSide()
+        {
+            var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            GameObject farEnemy = null;
+            float longestDistance = float.MinValue;
+
+            foreach (GameObject enemy in enemies)
+            {
+                if (enemy.transform.position.y < transform.position.y - 1f)
+                {
+                    continue;
+                }
+                float distance = Vector2.Distance(transform.position, enemy.transform.position);
+                if (distance > longestDistance)
+                {
+                    longestDistance = distance;
+                    farEnemy = enemy;
+                }
+            }
+            if (farEnemy == null)
+            {
+                return;
+            }
+            if (farEnemy.transform.position.x >= transform.position.x && !_spriteRenderer.flipX)
+            {
+                return;
+            }
+            if (farEnemy.transform.position.x <= transform.position.x && _spriteRenderer.flipX)
+            {
+                return;
+            }
+
+            _spriteRenderer.flipX = !_spriteRenderer.flipX;
+        }
     }
 }
