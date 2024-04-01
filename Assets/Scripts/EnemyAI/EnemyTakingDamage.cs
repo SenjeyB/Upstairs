@@ -40,8 +40,8 @@ namespace EnemyAI
         
         protected void Dying()
         {
+            PlaySound(_sounds[0], 1f, true);
             Killed();
-            PlaySound(_sounds[0], 0.5f, true);
             Instantiate(_deathEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
