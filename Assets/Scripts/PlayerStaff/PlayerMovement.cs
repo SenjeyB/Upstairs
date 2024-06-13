@@ -48,7 +48,7 @@ namespace PlayerStaff
         private bool IsOnAir()
         {
             
-            return Math.Abs(_rigidbody.velocity.y) > 0.1;
+            return Math.Abs(_rigidbody.velocity.y) > 0;
         }
 
         private void Start()
@@ -75,5 +75,6 @@ namespace PlayerStaff
                 GetComponent<TakingDamage>().Iamdead();
             }
         }
+        
     }
 }
