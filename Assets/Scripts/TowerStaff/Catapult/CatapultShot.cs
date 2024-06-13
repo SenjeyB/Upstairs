@@ -30,7 +30,7 @@ namespace TowerStaff.Catapult
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Ground") || other.CompareTag("Enemy"))
+            if (other.CompareTag("Ground") || (other.CompareTag("Enemy") && other.gameObject.name != "PickaxeAttack"))
             {
                 Destroy(gameObject);
             }
