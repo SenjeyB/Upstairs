@@ -29,7 +29,7 @@ namespace PlayerStaff
                 _audioSource.volume = 0f;
                 _nextSoundTime = Time.time + _nextSoundTimeReload;
             }
-            if (horizontal != 0 || IsOnAir())
+            if (horizontal != 0)
             {
                 _spriteRenderer.flipX = _input.x < 0;
                 _animations.IsMoving = true;
