@@ -117,6 +117,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8502332d4239a394e8d00243f0695b57, type: 3}
   _speed: 0
   _jumpForce: 0
+  _dashRechargeTime: 0
+  _dashInvincibilityTime: 0
 --- !u!95 &156194288032390213
 Animator:
   serializedVersion: 5
@@ -430,7 +432,7 @@ MonoBehaviour:
   _sounds:
   - {fileID: 8300000, guid: f05a03504c6a88240a0b1bee84de2149, type: 3}
   _health: 10
-  _invincibilityTime: 1
+  _invincibilityTime: 0.5
   _spriteRenderer: {fileID: 384666950421913564}
   _materialBlink: {fileID: 2100000, guid: 40a3baf2982cc894ca7da07412009f57, type: 2}
   _deathEffect: {fileID: 7925395022039976949, guid: 84f4f9e6b13929a4eb70d2e6bdde78c4, type: 3}
@@ -450,6 +452,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8502332d4239a394e8d00243f0695b57, type: 3}
   _speed: 3
   _jumpForce: 11
+  _dashRechargeTime: 1.25
+  _dashInvincibilityTime: 0.5
 --- !u!114 &9061656915124606968
 MonoBehaviour:
   m_ObjectHideFlags: 0

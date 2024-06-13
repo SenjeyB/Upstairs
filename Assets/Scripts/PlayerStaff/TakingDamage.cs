@@ -70,10 +70,15 @@ namespace PlayerStaff
         {
             PlaySound(_sounds[0]);
             _health -= damage;
+            IFramesProc(_invincibilityTime);
+        }
+
+        public void IFramesProc(float invincibilityTime)
+        {
             _isInvincible = true;
             _spriteRenderer.material = _materialBlink;
-            _endInvincibilityTime = Time.time + _invincibilityTime;
-            Invoke(nameof(MaterialReset), 1f);
+            _endInvincibilityTime = Time.time + invincibilityTime;
+            Invoke(nameof(MaterialReset), invincibilityTime);
         }
         
         public void AddHealth(int amount)
