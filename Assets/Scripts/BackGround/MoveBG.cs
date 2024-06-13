@@ -13,10 +13,6 @@ namespace BackGround
         {
             _meshRenderer.sortingOrder = -20;
         }
-        private void OnDisable()
-        {
-            //_meshRenderer.sharedMaterial.mainTextureOffset = _offset;
-        }
 
         private void Update()
         {
