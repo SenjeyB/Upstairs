@@ -790,7 +790,7 @@ GameObject:
   - component: {fileID: 1027682111}
   - component: {fileID: 1027682110}
   m_Layer: 5
-  m_Name: ScoreRivers
+  m_Name: ScorePit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -827,7 +827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02acb61bf65b0d948898760931183853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelName: TwoRivers
+  _levelName: Pit
 --- !u!114 &1027682111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1173,7 +1173,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Two Rivers
+  m_text: Pit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c530efe1f5e412249a8b70d197ed0671, type: 2}
   m_sharedMaterial: {fileID: 5505074672456365520, guid: c530efe1f5e412249a8b70d197ed0671, type: 2}
@@ -1732,7 +1732,7 @@ GameObject:
   - component: {fileID: 1894878026}
   - component: {fileID: 1894878025}
   m_Layer: 5
-  m_Name: TwoRivers
+  m_Name: Pit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1811,7 +1811,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: TwoRivers
+          m_StringArgument: Pit
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1894878026
@@ -2000,7 +2000,6 @@ GameObject:
   - component: {fileID: 2073765912}
   - component: {fileID: 2073765911}
   - component: {fileID: 2073765916}
-  - component: {fileID: 2073765917}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2111,18 +2110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2073765916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2073765910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6c73c8019608064199b1ddbab2f3d48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2073765917
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

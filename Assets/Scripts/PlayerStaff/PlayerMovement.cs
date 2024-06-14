@@ -10,6 +10,7 @@ namespace PlayerStaff
         [SerializeField] private float _jumpForce;
         [SerializeField] private float _dashRechargeTime;
         [SerializeField] private float _dashInvincibilityTime;
+        [SerializeField] private float _dashPower;
         private SpriteRenderer _spriteRenderer;
         private PlayerAnimation _animations;
         private Vector3 _input; 
@@ -91,7 +92,7 @@ namespace PlayerStaff
             {
                 return;
             }
-            _rigidbody.AddForce(transform.right * (4 * (_spriteRenderer.flipX ? -1 : 1)), ForceMode2D.Impulse);
+            _rigidbody.AddForce(transform.right * (_dashPower * (_spriteRenderer.flipX ? -1 : 1)), ForceMode2D.Impulse);
             _nextDashTime = Time.time + _dashRechargeTime;
             if (IsOnAir())
             {
@@ -103,13 +104,13 @@ namespace PlayerStaff
         private IEnumerator DashEffect()
         {
             Vector3 originalScale = transform.localScale;
-            Vector3 targetScale = new Vector3(originalScale.x, originalScale.y * 0.55f, originalScale.z);
+            Vector3 targetScale = new Vector3(originalScale.x, originalScale.y * 0.6f, originalScale.z);
 
             float time = 0;
             while (time <= 1)
             {
                 transform.localScale = Vector3.Lerp(originalScale, targetScale, time);
-                time += Time.deltaTime * 10; // 2 - скорость сжатия
+                time += Time.deltaTime * 10;
                 yield return null;
             }
             yield return new WaitUntil(() => !IsOnAir());
@@ -117,7 +118,7 @@ namespace PlayerStaff
             while (time <= 1)
             {
                 transform.localScale = Vector3.Lerp(targetScale, originalScale, time);
-                time += Time.deltaTime * 20; // 2 - скорость возвращения в исходное состояние
+                time += Time.deltaTime * 20;
                 yield return null;
             }
         }
