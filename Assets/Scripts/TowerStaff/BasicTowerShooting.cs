@@ -50,7 +50,7 @@ namespace TowerStaff
         }
         protected virtual void Update()
         {
-            if (_ammo.GetAmmo() <= 0 || _builderTile.IsBroken())
+            if (_ammo.GetAmmo() == 0 || _builderTile.IsBroken())
             {
                 _animations.Shoots = false;
                 _spriteRenderer.material = _materialOff;

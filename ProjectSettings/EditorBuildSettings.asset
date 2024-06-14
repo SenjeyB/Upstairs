@@ -23,9 +23,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Plains.unity
     guid: 9654932ed417eb74f96e9cd6de8dff4f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TwoRivers.unity
     guid: 418be3a43e50fdc48a105f48c50eeccf
+  - enabled: 1
+    path: Assets/Scenes/Pit.unity
+    guid: 9e0f61dd268cd7f4ebb8c17cca6977b2
   - enabled: 1
     path: Assets/Scenes/TwoHills.unity
     guid: 9fd093349497fb04299bdffed3586908
