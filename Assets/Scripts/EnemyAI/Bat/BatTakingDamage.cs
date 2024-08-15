@@ -13,6 +13,7 @@ namespace EnemyAI.Bat
         {
             _gameInfo.AddEssence(1);
             _gameInfo.AddScore(20);
+            _gameInfo.AddKill();
         }
         private void Start()
         {

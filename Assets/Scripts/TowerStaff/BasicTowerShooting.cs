@@ -14,7 +14,7 @@ namespace TowerStaff
         [SerializeField] protected int _ammoCount;
         [SerializeField] protected float _damage;
         [SerializeField] protected string _name;
-        private BasicTowerAnimation _animations;
+        protected BasicTowerAnimation _animations;
         protected Material _materialDefault;
         protected float _nextFireTime;
         protected BasicTowerLevel _level;
@@ -53,9 +53,11 @@ namespace TowerStaff
             if (_ammo.GetAmmo() == 0 || _builderTile.IsBroken())
             {
                 _animations.Shoots = false;
+                _animations.DisableAnimator();
                 _spriteRenderer.material = _materialOff;
                 return;
             }
+            _animations.EnableAnimator();
             _spriteRenderer.material = _materialDefault;
             _animations.Shoots = !(Time.time < _nextFireTime - 0.3f);
             ShootingSide();
@@ -123,6 +125,9 @@ namespace TowerStaff
         public void Reload()
         {
             _nextFireTime = Time.time + _reloadSpeed;
+            _animations.DisableAnimator();
+            _animations.EnableAnimator();
+            _animations.RestartAnimation();
         }
         
         public int GetAmmoCount()

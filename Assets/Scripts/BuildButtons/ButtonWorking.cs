@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using BuildTile;
 using GameCont;
+using MainMenu;
 using ToolTips;
 using UnityEngine;
 using TowerType = Enums.TowerType;
@@ -21,8 +23,11 @@ namespace BuildButtons
         private Dictionary<TowerType, int> _costs;
         private Dictionary<TowerType, int> _costsReload;
         private Dictionary<TowerType, int> _costsUpgrade;
+        private Dictionary<TowerType, String> _towerTips;
+        private Dictionary<TowerType, String> _towerBonuses;
         private Dictionary<int, TowerType> _towers;
         private GameObject _toolTipPanel;
+        private PauseButton _pauseButton;
         public void SetButtonType(int buttonType)
         {
             _buttonType = buttonType;
@@ -34,10 +39,10 @@ namespace BuildButtons
 
         private void Start()
         {
-            
             FillCosts();
             _materialDefault = GetComponent<SpriteRenderer>().material;
             _playerInfo = GameObject.FindWithTag("GameController").GetComponent<PlayerInfo>();
+            _pauseButton = GameObject.FindWithTag("UI").GetComponent<PauseButton>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _spriteRenderer.sprite = _buttonSprite[_buttonType];
         }
@@ -51,7 +56,8 @@ namespace BuildButtons
                 [TowerType.Taser] = 12,
                 [TowerType.Catapult] = 16,
                 [TowerType.Firecracker] = 12,
-                [TowerType.Mine] = 1
+                [TowerType.Mine] = 1,
+                [TowerType.EssenceGetter] = 8
             };
             _costsUpgrade = new Dictionary<TowerType, int>
             {
@@ -59,7 +65,8 @@ namespace BuildButtons
                 [TowerType.Taser] = 15,
                 [TowerType.Catapult] = 18,
                 [TowerType.Firecracker] = 15,
-                [TowerType.Mine] = 1
+                [TowerType.Mine] = 1,
+                [TowerType.EssenceGetter] = 10
             };
             _costsReload = new Dictionary<TowerType, int>
             {
@@ -67,7 +74,8 @@ namespace BuildButtons
                 [TowerType.Taser] = 1,
                 [TowerType.Catapult] = 2,
                 [TowerType.Firecracker] = 2,
-                [TowerType.Mine] = 0   
+                [TowerType.Mine] = 0,
+                [TowerType.EssenceGetter] = 0
                 
             };
             _towers = new Dictionary<int, TowerType>
@@ -76,13 +84,32 @@ namespace BuildButtons
                 [5] = TowerType.Taser,
                 [4] = TowerType.Catapult,
                 [6] = TowerType.Firecracker,
-                [7] = TowerType.Mine
-                
+                [7] = TowerType.Mine,
+                [8] = TowerType.EssenceGetter
+            };
+            _towerTips = new Dictionary<TowerType, String>
+            {
+                [TowerType.Ballista] = "Ballista shoots fast, deals low damage and has high ammo capacity",
+                [TowerType.Catapult] = "Catapult slowly shoots with high damage stones",
+                [TowerType.Taser] = "Taser attacks enemies nearby. Can easily kill rats!",
+                [TowerType.Firecracker] = "Firecrackers shoots high in the air, dealing damage to enemies above",
+                [TowerType.Mine] = "Mine explodes when enemy steps on it",
+                [TowerType.EssenceGetter] = "Essence getter extracts essence from air"
+            };
+            _towerBonuses = new Dictionary<TowerType, String>
+            {
+                [TowerType.Ballista] = "Bonus: Bolts pierces through multiple enemies!",
+                [TowerType.Catapult] = "Bonus: Slows down survived enemies!",
+                [TowerType.Taser] = "Bonus: Repairs broken tower after shooting!",
+                [TowerType.Firecracker] = "Bonus: Infinity ammo!",
+                [TowerType.Mine] = "",
+                [TowerType.EssenceGetter] = "Bonus: Unbreakable!"
             };
         }
 
         private void OnMouseUp()
         {
+            if(_pauseButton.IsPaused()) return;
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Collider2D collider = GetComponent<Collider2D>();
             if (!collider.OverlapPoint(mousePos)) return;
@@ -99,6 +126,7 @@ namespace BuildButtons
                 {
                     _builderTile.UpgradeTower(_costsUpgrade[towerType] * _builderTile.GetLevel());
                     _builderTile.ReloadTower();
+                    _playerInfo.AddScore(_costsUpgrade[towerType] * _builderTile.GetLevel());
                 }
                 else
                 {
@@ -126,6 +154,7 @@ namespace BuildButtons
                 {
                     _playerInfo.AddEssence(-_costs[_towers[_buttonType]]);
                     _builderTile.SetTowerType(_towers[_buttonType]);
+                    _playerInfo.AddScore(_costs[_towers[_buttonType]]);
                 }
                 else
                 {
@@ -137,6 +166,7 @@ namespace BuildButtons
     
         private void OnMouseEnter()
         {
+            if(_pauseButton.IsPaused()) return;
             _spriteRenderer.color = new Color(0.5f, 0.5f, 0.5f);
             Instantiate(_toolTip);
             _toolTipPanel = GameObject.FindGameObjectWithTag("ToolTip");
@@ -145,15 +175,15 @@ namespace BuildButtons
             {
                 _toolTipPanel.GetComponent<ToolTip>().ShowTooltip("Destroy tower", 0);
             }
-            if(_buttonType == 1)
+            else if(_buttonType == 1)
             {
-                
                 if (_builderTile.GetLevel() < 3)
                 {
                     string tip = "Upgrade tower to level " + (_builderTile.GetLevel() + 1) + "\n";
                     if (_builderTile.GetLevel() == 2)
                     {
-                        if (_builderTile.GetTowerType() == TowerType.Ballista)
+                        tip += _towerBonuses[_builderTile.GetTowerType()];
+                        /*if (_builderTile.GetTowerType() == TowerType.Ballista)
                         {
                             tip += "Bonus: Bolts pierces through multiple enemies!";
                         }
@@ -169,6 +199,10 @@ namespace BuildButtons
                         {
                             tip += "Bonus: Infinity ammo!";
                         }
+                        if (_builderTile.GetTowerType() == TowerType.EssenceGetter)
+                        {
+                            tip += "Bonus: Unbreakable!";
+                        }*/
                     }
                     _toolTipPanel.GetComponent<ToolTip>().ShowTooltip(tip, _costsUpgrade[_builderTile.GetTowerType()] * _builderTile.GetLevel());
                 }
@@ -177,11 +211,15 @@ namespace BuildButtons
                     _toolTipPanel.GetComponent<ToolTip>().ShowTooltip("Max level", 0);
                 }
             }
-            if (_buttonType == 2)
+            else if (_buttonType == 2)
             {
                 _toolTipPanel.GetComponent<ToolTip>().ShowTooltip("Reload tower ammo or repair it", _costsReload[_builderTile.GetTowerType()]);
             }
-            if (_buttonType == 3)
+            else
+            {
+                _toolTipPanel.GetComponent<ToolTip>().ShowTooltip(_towerTips[_towers[_buttonType]], _costs[_towers[_buttonType]]);
+            }
+            /*if (_buttonType == 3)
             {
                 _toolTipPanel.GetComponent<ToolTip>().ShowTooltip("Ballista shoots fast, deals low damage and has high ammo capacity", _costs[TowerType.Ballista]);
             }
@@ -201,6 +239,10 @@ namespace BuildButtons
             {
                 _toolTipPanel.GetComponent<ToolTip>().ShowTooltip("Mine explodes when enemy steps on it", _costs[TowerType.Mine]);
             }
+            if (_buttonType == 8)
+            {
+                _toolTipPanel.GetComponent<ToolTip>().ShowTooltip("Essence getter extracts essence from air", _costs[TowerType.EssenceGetter]);
+            }*/
         }
         
         private void OnMouseExit()
@@ -216,6 +258,7 @@ namespace BuildButtons
 
         private void OnMouseDown()
         {
+            if(_pauseButton.IsPaused()) return;
             _spriteRenderer.material = _materialBlink;
         }
 

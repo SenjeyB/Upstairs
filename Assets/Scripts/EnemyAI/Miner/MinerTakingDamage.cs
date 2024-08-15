@@ -12,6 +12,7 @@ namespace EnemyAI.Miner
         {
             _gameInfo.AddEssence(1);
             _gameInfo.AddScore(15);
+            _gameInfo.AddKill();
             Destroy(_minerMovement._pickaxe);
         }
         

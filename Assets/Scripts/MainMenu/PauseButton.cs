@@ -50,6 +50,10 @@ namespace MainMenu
             Time.timeScale = 1f;
             SceneManager.LoadScene("MainMenu");
         }
-
+        
+        public bool IsPaused()
+        {
+            return _isPaused;
+        }
     }
 }

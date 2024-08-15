@@ -14,6 +14,7 @@ namespace EnemyAI.Skeleton
         {
             _gameInfo.AddEssence(1);
             _gameInfo.AddScore(10);
+            _gameInfo.AddKill();
         }
         private void Start()
         {

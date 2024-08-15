@@ -11,6 +11,7 @@ public class Enums : MonoBehaviour
         Catapult = 2,
         Firecracker = 3,
         Mine = 4,
+        EssenceGetter = 5,
         NotSet = 99
     }
 }

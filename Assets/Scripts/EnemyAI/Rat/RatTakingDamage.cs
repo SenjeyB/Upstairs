@@ -15,6 +15,7 @@ namespace EnemyAI.Rat
             GetComponent<RatMovement>().GetTurret().GetComponent<BuilderTile>().RepairTower();
             _gameInfo.AddEssence(2);
             _gameInfo.AddScore(20);
+            _gameInfo.AddKill();
         }
         private void Start()
         {

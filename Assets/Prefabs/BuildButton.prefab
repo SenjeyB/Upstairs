@@ -71,6 +71,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c49cd1bd8e462654bbfa9c46eaa191b2, type: 3}
   - {fileID: 21300000, guid: 5a33631beb56f95498b6be5a1d211538, type: 3}
   - {fileID: 21300000, guid: b69d0362dd83b1f4fb00f7427ec0dbf3, type: 3}
+  - {fileID: 21300000, guid: 26ed19bb8726e7646b9dc505a530a389, type: 3}
   _materialBlink: {fileID: 2100000, guid: 40a3baf2982cc894ca7da07412009f57, type: 2}
   _toolTip: {fileID: 7477796410748213874, guid: 0f235dc2acff69746b231a3d3f279273, type: 3}
 --- !u!212 &-2138629573469746130

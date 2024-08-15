@@ -13,8 +13,9 @@ namespace GameCont
         private GameObject _player;
         private TakingDamage _playerInfo;
         private float _gameTime;
-        private int _score;
+        private int _score = 0;
         private float _coefficient = 1f;
+        private int _kills = 0;
         protected float _nextUpdate = 60f;
         protected float _nextUpdateTimer;
         public void AddEssence(int amount)
@@ -30,6 +31,11 @@ namespace GameCont
             _score += amount;
         }
         
+        public void AddKill()
+        {
+            _kills++;
+        }
+        
         public float GetGameTime()
         {
             return Time.time - _gameTime;
@@ -43,7 +49,6 @@ namespace GameCont
             _gameTime = Time.time;
             _playerInfo = _player.GetComponent<TakingDamage>();
             PlaySound(_sounds[0], 1f, false, true);
-            _score = 0;
             _nextUpdateTimer = Time.time + _nextUpdate;
             Invoke(nameof(UpdateScore), 1f);
         }
@@ -62,6 +67,11 @@ namespace GameCont
         public int GetHealth()
         {
             return _playerInfo.GetHealth();
+        }
+
+        public int GetKills()
+        {
+            return _kills;
         }
         
         /*private void OnGUI()

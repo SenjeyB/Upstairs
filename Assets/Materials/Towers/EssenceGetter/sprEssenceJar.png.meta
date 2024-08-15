@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d679fa1e233c15c4aba1274697fdbb96
+guid: ad831c196a447624d805818fc518f202
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Catapult1_0
+      name: sprEssenceJar_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 34
-        height: 34
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05abdeb27fd6d7e4bac8fd8dd3cfcb96
-      internalID: -918974355
+      spriteID: f2b8cfbe3ea5f294c9aa8a4fbd34abb0
+      internalID: 577887031
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Catapult1_1
+      name: sprEssenceJar_1
       rect:
         serializedVersion: 2
-        x: 34
+        x: 32
         y: 0
-        width: 34
-        height: 34
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 805d1a9b4dfa3eb41a8e8a1ea7928cc8
-      internalID: -967135309
+      spriteID: 7dc08db714ba2fd41be1cb419b6e4138
+      internalID: -1408318898
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Catapult1_2
+      name: sprEssenceJar_2
       rect:
         serializedVersion: 2
-        x: 68
+        x: 64
         y: 0
-        width: 34
-        height: 34
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d16a937f90cb57a489db6071b4c20bb1
-      internalID: 901512131
+      spriteID: 36c0a981634062344868227597fed73a
+      internalID: 34478172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Catapult1_3
+      name: sprEssenceJar_3
       rect:
         serializedVersion: 2
-        x: 102
+        x: 96
         y: 0
-        width: 34
-        height: 34
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06464f517fe6f5b4cb729404ffeaf7e2
-      internalID: -485757100
+      spriteID: 4e9968208ca9cd04c884696b5efd5ff7
+      internalID: 1753285701
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Catapult1_4
+      name: sprEssenceJar_4
       rect:
         serializedVersion: 2
-        x: 136
+        x: 128
         y: 0
-        width: 34
-        height: 34
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,29 +221,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6ac7c1d409a9ba4ba9e1cb62e761720
-      internalID: 1816564131
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Catapult1_5
-      rect:
-        serializedVersion: 2
-        x: 170
-        y: 0
-        width: 34
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 443723a341e70fc498667564b7475e3d
-      internalID: 263600814
+      spriteID: 6550238ae2819994fa2f347822a8f580
+      internalID: -1726105807
       vertices: []
       indices: 
       edges: []
@@ -259,12 +238,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Catapult1_0: -918974355
-      Catapult1_1: -967135309
-      Catapult1_2: 901512131
-      Catapult1_3: -485757100
-      Catapult1_4: 1816564131
-      Catapult1_5: 263600814
+      sprEssenceJar_0: 577887031
+      sprEssenceJar_1: -1408318898
+      sprEssenceJar_2: 34478172
+      sprEssenceJar_3: 1753285701
+      sprEssenceJar_4: -1726105807
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
