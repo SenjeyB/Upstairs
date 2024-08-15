@@ -15,6 +15,7 @@ namespace BuildTile
         [SerializeField] private GameObject _catapultTower;
         [SerializeField] private GameObject _taserTower;
         [SerializeField] private GameObject _firecrackerTower;
+        [SerializeField] private GameObject _mineTower;
         private SpriteRenderer _spriteRenderer;
         private PlayerInfo _playerInfo;
         private bool _isRatted;
@@ -27,12 +28,12 @@ namespace BuildTile
 
         private void DrawShop()
         {
-            const int numberOfTurrets = 4;
+            const int numberOfTurrets = 5;
             const float buttonSpacing = 2f;
             for (int i = 0; i < numberOfTurrets; i++)
             {
                 GameObject button = Instantiate(_buildButton);
-                button.transform.position = new Vector3(i * buttonSpacing - 3, 3, 0);
+                button.transform.position = new Vector3(i * buttonSpacing - 4, 3, 0);
                 button.GetComponent<ButtonWorking>().SetButtonType(i + 3);
                 button.GetComponent<ButtonWorking>().SetParentPlatform(gameObject);
             }
@@ -167,7 +168,8 @@ namespace BuildTile
                 [TowerType.Ballista] = _ballistaTower,
                 [TowerType.Catapult] = _catapultTower,
                 [TowerType.Taser] = _taserTower,
-                [TowerType.Firecracker] = _firecrackerTower
+                [TowerType.Firecracker] = _firecrackerTower,
+                [TowerType.Mine] = _mineTower
             };
         }
         

@@ -148,3 +148,4 @@ MonoBehaviour:
   _catapultTower: {fileID: 624885248147228210, guid: a80d19c8665d2b149b641c1ef59c06b2, type: 3}
   _taserTower: {fileID: 624885248147228210, guid: 86397d6c04739cb41949d081c3980a5b, type: 3}
   _firecrackerTower: {fileID: 7455460755249952099, guid: e81c7eae9be09b346a959911bba89873, type: 3}
+  _mineTower: {fileID: 1283161788415765121, guid: 2b563e4cd46d8b4479ff3f8ee15a89f9, type: 3}

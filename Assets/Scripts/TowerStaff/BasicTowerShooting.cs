@@ -111,7 +111,7 @@ namespace TowerStaff
             _nextFireTime = Time.time + _reloadSpeed;
         }
 
-        protected void OnTriggerEnter2D(Collider2D other)
+        protected virtual void OnTriggerEnter2D(Collider2D other)
         {
             if (!other.CompareTag("TaserShot")) return;
             if (other.GetComponent<TaserShot>().IsRepairing() && _builderTile.IsBroken())

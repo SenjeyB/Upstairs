@@ -19,7 +19,7 @@ namespace MainMenu
         {
             if (!_audioSource.isPlaying) PlaySound(_sounds[0], 1f, false, true);
             
-            if(SceneManager.GetActiveScene().name == "Plains" || SceneManager.GetActiveScene().name == "TwoHills" || SceneManager.GetActiveScene().name == "TwoRivers")
+            if(SceneManager.GetActiveScene().name == "Plains" || SceneManager.GetActiveScene().name == "TwoHills" || SceneManager.GetActiveScene().name == "TwoRivers" || SceneManager.GetActiveScene().name == "Pit")
             {
                 Destroy(gameObject);
             }

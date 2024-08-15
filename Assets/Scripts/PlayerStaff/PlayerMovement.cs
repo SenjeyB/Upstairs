@@ -96,7 +96,8 @@ namespace PlayerStaff
             _nextDashTime = Time.time + _dashRechargeTime;
             if (IsOnAir())
             {
-                StartCoroutine(DashEffect());
+                //StartCoroutine(DashEffect());
+                _rigidbody.AddForce(transform.up * _dashPower / 2, ForceMode2D.Impulse);
             }
             _takingDamage.IFramesProc(_dashInvincibilityTime);
         }

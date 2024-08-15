@@ -10,6 +10,7 @@ public class Enums : MonoBehaviour
         Taser = 1,
         Catapult = 2,
         Firecracker = 3,
-        NotSet = 4
+        Mine = 4,
+        NotSet = 99
     }
 }

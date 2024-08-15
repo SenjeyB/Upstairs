@@ -50,28 +50,34 @@ namespace BuildButtons
                 [TowerType.Ballista] = 8,
                 [TowerType.Taser] = 12,
                 [TowerType.Catapult] = 16,
-                [TowerType.Firecracker] = 12
+                [TowerType.Firecracker] = 12,
+                [TowerType.Mine] = 1
             };
             _costsUpgrade = new Dictionary<TowerType, int>
             {
                 [TowerType.Ballista] = 12,
                 [TowerType.Taser] = 15,
                 [TowerType.Catapult] = 18,
-                [TowerType.Firecracker] = 15
+                [TowerType.Firecracker] = 15,
+                [TowerType.Mine] = 1
             };
             _costsReload = new Dictionary<TowerType, int>
             {
                 [TowerType.Ballista] = 0,
                 [TowerType.Taser] = 1,
                 [TowerType.Catapult] = 2,
-                [TowerType.Firecracker] = 2
+                [TowerType.Firecracker] = 2,
+                [TowerType.Mine] = 0   
+                
             };
             _towers = new Dictionary<int, TowerType>
             {
                 [3] = TowerType.Ballista,
                 [5] = TowerType.Taser,
                 [4] = TowerType.Catapult,
-                [6] = TowerType.Firecracker
+                [6] = TowerType.Firecracker,
+                [7] = TowerType.Mine
+                
             };
         }
 
@@ -190,6 +196,10 @@ namespace BuildButtons
             if (_buttonType == 6)
             {
                 _toolTipPanel.GetComponent<ToolTip>().ShowTooltip("Firecrackers shoots high in the air, dealing damage to enemies above", _costs[TowerType.Firecracker]);
+            }
+            if (_buttonType == 7)
+            {
+                _toolTipPanel.GetComponent<ToolTip>().ShowTooltip("Mine explodes when enemy steps on it", _costs[TowerType.Mine]);
             }
         }
         
