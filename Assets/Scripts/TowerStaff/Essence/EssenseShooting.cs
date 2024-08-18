@@ -28,5 +28,26 @@ namespace TowerStaff.Essence
             _nextFireTime = Time.time + _reloadSpeed;
         }
         protected override void ShootingSide() {}
+        
+        protected override void Update()
+        {
+            if (_builderTile.IsBroken() && _level.GetLevel() != 3)
+            {
+                _animations.Shoots = false;
+                _animations.DisableAnimator();
+                _spriteRenderer.material = _materialOff;
+                return;
+            }
+            if(_builderTile.IsBroken() && _level.GetLevel() == 3) _builderTile.RepairTower();
+            _animations.EnableAnimator();
+            _spriteRenderer.material = _materialDefault;
+            _animations.Shoots = !(Time.time < _nextFireTime - 0.3f);
+            ShootingSide();
+            if (Time.time < _nextFireTime)
+            {
+                return;
+            }
+            Shoot();
+        }
     }
 }

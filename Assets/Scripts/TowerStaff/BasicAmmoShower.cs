@@ -15,12 +15,11 @@ namespace TowerStaff
         private BasicTowerLevel _towerLevel => GetComponent<BasicTowerLevel>();
         private void Show()
         {
+            _toolTipPanel = GameObject.FindGameObjectWithTag("ToolTip");
             string tip = "Ammo left: " + _towerAmmo.GetAmmo() + "\n" +
                          "Reload time: " + _towerShooting.GetReloadTime() + "s\n" +
                          "Damage: " + _towerShooting.GetDamage() + "\n" +
                          "Level: " + _towerLevel.GetLevel() + "\n";
-            
-            _toolTipPanel = GameObject.FindGameObjectWithTag("ToolTip");
             _toolTipPanel.GetComponent<ToolTip>().ShowTooltip(tip, 0, _towerShooting.GetName());
         }
 

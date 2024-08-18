@@ -34,7 +34,7 @@ namespace BuildTile
             for (int i = 0; i < numberOfTurrets; i++)
             {
                 GameObject button = Instantiate(_buildButton);
-                button.transform.position = new Vector3(i * buttonSpacing - 6, 3, 0);
+                button.transform.position = new Vector3(i * buttonSpacing - 5, 3, 0);
                 button.GetComponent<ButtonWorking>().SetButtonType(i + 3);
                 button.GetComponent<ButtonWorking>().SetParentPlatform(gameObject);
             }
